@@ -1,4 +1,5 @@
-//import logo from './logo.svg';
+import logo from './logo.svg';
+
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
@@ -17,8 +18,16 @@ import MainLogin from './components/main/login';
 import MainResetpassword from './components/main/resetPassword';
 import MainSignup from './components/main/signup';
 import UserProfile from './components/user/profile';
+import UserAddQuery from './components/user/addQuery';
+import UserAddReview from './components/user/addReview';
+import MainlistReviews from './components/main/listReviews';
+
+
 function App() {
+  
+
   return (
+    
    < BrowserRouter>
     <Routes>
       <Route element={<Admin/>} path="admin">
@@ -33,13 +42,18 @@ function App() {
         <Route element={<MainLogin/>} path="login"/>
         <Route element={<MainResetpassword/>} path="resetPassword"/>
         <Route element={<MainSignup/>} path="signup"/>
+        <Route element={<MainlistReviews/>} path="listReviews"/>
+
       </Route>
       <Route element={<User/>} path="user">
         <Route element={<UserProfile/>} path="profile"/>
+        <Route element={<UserAddQuery/>} path="addQuery"/>
+        <Route element={<UserAddReview/>} path="addReview"/>
       </Route>
 
     </Routes>
    </BrowserRouter>
+   
   );
 }
 
