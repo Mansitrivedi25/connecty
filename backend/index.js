@@ -1,31 +1,24 @@
-// importing express
 const express = require("express");
-const UserRouter = require("./routers/UserRouter");
-
-// initialize express
 const app = express();
-
-// defining port
 const port = 5000;
-//for reading json data
+
+const cors = require("cors");
+
+const userRouter = require("./routers/userRouter");
+const vendorRouter = require("./routers/vendorRouter");
+const reviewRouter = require("./routers/reviewRouter");
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+  })
+);
 app.use(express.json());
-// middleware
-app.use("/user", UserRouter);
 
-// endpoint or route
-app.get("/", (req, res) => {
-  res.send("you got a reponse");
-});
+app.use("/user", userRouter);
+app.use("/vendor", vendorRouter);
+app.use("/review", reviewRouter);
 
-app.get("/home", (req, res) => {
-  res.send("you have reached home");
-});
-
-app.get("*", (req, res) => {
-  res.send("invalid request");
-});
-
-// starting the server
 app.listen(port, () => {
-  console.log("server started on 5000");
+  console.log("server started");
 });

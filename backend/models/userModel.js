@@ -1,12 +1,11 @@
-const mongoose = require('../connection');
-
-//structure create/ schema
-const schema= new mongoose.Schema({
-    email:String,
-    password :String,
-    age:Number,
-    createAt:{type:Date, default:new Date()}
+const mongoose = require("../connection");
+const schema = new mongoose.Schema({
+  username: String,
+  email: String,
+  password: String,
+  createdAt: { type: Date, default: new Date() },
 });
-const model =mongoose.model("user", schema);
+
+const model = mongoose.model("users", schema);
 
 module.exports = model;

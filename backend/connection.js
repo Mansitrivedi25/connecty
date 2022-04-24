@@ -1,13 +1,15 @@
 const mongoose = require("mongoose");
-const url =
-'mongodb+srv://Mansi:trivedi25@cluster0.flf40.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const api_config = require("./config");
 
-//this will return promise
-mongoose 
-.connect(url)
-.then(() => {console.log("database connected");
-})
-.catch((err)=>{console.error(err);
-});
+const url = api_config.db_url;
 
-module.exports= mongoose;
+mongoose
+  .connect(url)
+  .then(() => {
+    console.log("database connected");
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+module.exports = mongoose;
